@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://www.w3schools.com/w3css/tryw3css_templates_band.htm# -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>W3.CSS Template</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./template_files/w3.css">
+  <link rel="stylesheet" href="./template_files/css">
+  <link rel="stylesheet" href="./template_files/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif
+    }
+
+    .mySlides {
+      display: none
+    }
+
+    .description {
+      width: 60%;
+      text-align: center;
+      margin: auto;
+    }
+
+    .tourDateContent {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .buyBtn {
+      background: transparent;
+      border: 2px solid green;
+      color: green;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .buyBtn:hover {
+      background-color: green;
+      color: white;
+    }
+
+    .learnMore {
+      display: none;
+    }
+
+    .w3-bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      transform: translateY(100%);
+      transition: transform 0.5s ease-in-out;
+      z-index: 1000;
+    }
+
+    .tourBtnGroup {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /** Modal style  **/
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      text-align: center;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 12px 16px;
+      transform: translate(50%, -50%);
+      cursor: pointer;
+    }
+
+    .close:hover {
+      background-color: #ccc;
+    }
+
+    .success-icon {
+      color: green;
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 16px;
+    }
+
+    .button:hover {
+      background-color: #3e8e41;
+    }
+
+    /* Media querry **/
+    @media screen and (max-width : 600px) {
+      .w3-top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+        transition: top 0.5s ease-in-out;
+      }
+
+      /* Hide navbar when scrolling down */
+      .w3-scroll-down {
+        top: -50px;
+      }
+
+      /* Show navbar when scrolling up */
+      .w3-scroll-up {
+        top: 95%;
+      }
+
+      .cardContent {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 10px 0px;
+        justify-content: space-between;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .cardContent>img {
+        order: -1;
+      }
+
+      .newDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .description {
+        width: 100%;
+        margin: 0;
+      }
+
+      .learnMore {
+        display: block;
+        color: white;
+        border-radius: 25px;
+        background-color: red;
+
+      }
+    }
+  </style>
+  <style type="text/css">
+    @font-face {
+      font-weight: 400;
+      font-style: normal;
+      font-family: 'Circular-Loom';
+
+      src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-weight: 500;
+      font-style: normal;
+      font-family: 'Circular-Loom';
+
+      src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Medium.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Circular-Loom';
+
+      src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-weight: 900;
+      font-style: normal;
+      font-family: 'Circular-Loom';
+
+      src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Black.woff2') format('woff2');
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top" id="navbar">
+    <div class="w3-bar w3-black w3-card">
+      <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)"
+        onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#"
+        class="w3-bar-item w3-button w3-padding-large">HOME</a>
+      <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#band"
+        class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a>
+      <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#tour"
+        class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
+      <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#contact"
+        class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+      <div class="w3-dropdown-hover w3-hide-small">
+        <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#"
+            class="w3-bar-item w3-button">Merchandise</a>
+          <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#"
+            class="w3-bar-item w3-button">Extras</a>
+          <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#" class="w3-bar-item w3-button">Media</a>
+        </div>
+      </div>
+      <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i
+          class="fa fa-search"></i></a>
+    </div>
+  </div>
+
+  <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+    <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#band"
+      class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">BAND</a>
+    <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#tour"
+      class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TOUR</a>
+    <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#contact"
+      class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+    <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#"
+      class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
+  </div>
+
+  <!-- Page content -->
+  <div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+    <!-- Automatic Slideshow Images -->
+    <div class="mySlides w3-display-container w3-center" style="display: none;">
+      <img src="./template_files/la.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        <h3>Los Angeles</h3>
+        <p><b>We had the best time playing at Venice Beach!</b></p>
+      </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center" style="display: none;">
+      <img src="./template_files/ny.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        <h3>New York</h3>
+        <p><b>The atmosphere in New York is lorem ipsum.</b></p>
+      </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center" style="display: block;">
+      <img src="./template_files/chicago.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        <h3>Chicago</h3>
+        <p><b>Thank you, Chicago - A night we won't forget.</b></p>
+      </div>
+    </div>
+
+    <!-- The Band Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+      <h2 class="w3-wide">THE BAND</h2>
+      <p class="w3-opacity"><i>We love music</i></p>
+      <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip
+        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+        id est laborum consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="w3-row w3-padding-32">
+        <div id="cardContent" class="w3-third cardContent">
+          <p class='cardName'>Name</p>
+          <img src="./template_files/bandmember.jpg" class="w3-round w3-margin-bottom cardImg" alt="Random Name"
+            style="width:60%">
+          <p class="description">
+            lorem lpsum lorem lpsum lorem lpsum lorem lpsum lorem lpsum
+          </p>
+        </div>
+        <div id="cardContent" class="w3-third cardContent">
+          <p class='cardName'>Name</p>
+          <img src="./template_files/bandmember.jpg" class="w3-round w3-margin-bottom cardImg" alt="Random Name"
+            style="width:60%">
+          <p class="description">
+            lorem lpsum lorem lpsum lorem lpsum lorem lpsum lorem lpsum
+          </p>
+        </div>
+        <div id="cardContent" class="w3-third cardContent">
+          <p class='cardName'>Name</p>
+          <img src="./template_files/bandmember.jpg" class="w3-round w3-margin-bottom cardImg" alt="Random Name"
+            style="width:60%">
+          <p class="description">
+            lorem lpsum lorem lpsum lorem lpsum lorem lpsum lorem lpsum
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Tour Section -->
+    <div class="w3-black" id="tour">
+      <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+        <h2 class="w3-wide w3-center">TOUR DATES</h2>
+        <p class="w3-opacity w3-center"><i>Remember to book your tickets!</i></p><br>
+
+        <ul class="w3-ul w3-border w3-white w3-text-grey">
+          <li class="w3-padding tourDateContent">
+            <div>
+              <span>September</span>
+              <span id="soldOut" class="w3-tag w3-red w3-margin-left">Sold out</span>
+            </div>
+            <button class="buyBtn">Buy</button>
+          </li>
+          <li class="w3-padding tourDateContent">
+            <div>
+              <span>October</span>
+              <span id="soldOut" class="w3-tag w3-red w3-margin-left">Sold out</span>
+            </div>
+            <button class="buyBtn">Buy</button>
+          </li>
+          <li class="w3-padding tourDateContent">
+            <span>
+              November
+            </span>
+            <div>
+              <span id="soldOut" class="w3-badge">3</span>
+              <button class="buyBtn">Buy</button>
+            </div>
+          </li>
+        </ul>
+
+        <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+          <div class="w3-third w3-margin-bottom">
+            <img src="./template_files/newyork.jpg" alt="New York" style="width:100%" class="w3-hover-opacity">
+            <div class="w3-container w3-white">
+              <p><b>New York</b></p>
+              <p class="w3-opacity">Fri 27 Nov 2016</p>
+              <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+              <div class="tourBtnGroup">
+                <button class="w3-button w3-black w3-margin-bottom"
+                  onclick="document.getElementById(&#39;ticketModal&#39;).style.display=&#39;block&#39;">Buy
+                  Tickets</button>
+                <button class="learnMore w3-btn w3-margin-bottom"> <i style="margin-right: 10px;"
+                    class="fas fa-arrow-right"></i> Learn More </button>
+              </div>
+
+            </div>
+          </div>
+          <div class="w3-third w3-margin-bottom">
+            <img src="./template_files/paris.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">
+            <div class="w3-container w3-white">
+              <p><b>Paris</b></p>
+              <p class="w3-opacity">Sat 28 Nov 2016</p>
+              <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+              <div class="tourBtnGroup">
+                <button class="w3-button w3-black w3-margin-bottom"
+                  onclick="document.getElementById(&#39;ticketModal&#39;).style.display=&#39;block&#39;">Buy
+                  Tickets</button>
+                <button class="learnMore w3-btn w3-margin-bottom"> <i style="margin-right: 10px;"
+                    class="fas fa-arrow-right"></i> Learn More </button>
+
+              </div>
+            </div>
+          </div>
+          <div class="w3-third w3-margin-bottom">
+            <img src="./template_files/sanfran.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+            <div class="w3-container w3-white">
+              <p><b>San Francisco</b></p>
+              <p class="w3-opacity">Sun 29 Nov 2016</p>
+              <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+              <div class="tourBtnGroup">
+                <button class="w3-button w3-black w3-margin-bottom"
+                  onclick="document.getElementById(&#39;ticketModal&#39;).style.display=&#39;block&#39;">Buy
+                  Tickets</button>
+                <button class="learnMore w3-btn w3-margin-bottom"> <i style="margin-right: 10px;"
+                    class="fas fa-arrow-right"></i> Learn More </button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ticket Modal -->
+    <div id="ticketModal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top w3-card-4">
+        <header class="w3-container w3-teal w3-center w3-padding-32">
+          <span onclick="document.getElementById(&#39;ticketModal&#39;).style.display=&#39;none&#39;"
+            class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+          <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
+        </header>
+        <div class="w3-container">
+          <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
+          <input class="w3-input w3-border" type="text" placeholder="How many?">
+          <p><label><i class="fa fa-user"></i> Send To</label></p>
+          <input class="w3-input w3-border" type="text" placeholder="Enter email">
+          <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i
+              class="fa fa-check"></i></button>
+          <button class="w3-button w3-red w3-section"
+            onclick="document.getElementById(&#39;ticketModal&#39;).style.display=&#39;none&#39;">Close <i
+              class="fa fa-remove"></i></button>
+          <p class="w3-right">Need <a href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm#"
+              class="w3-text-blue">help?</a></p>
+        </div>
+      </div>
+    </div>
+    <!---Contact Modal-->
+    <div id="ContactModal" class="modal">
+
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>Awesome!</h1>
+        <p> Your booking has been confirmed.</p>
+        <p> Check your email for details.</p>
+        <button class="button" onclick="closeModal()">OK</button>
+      </div>
+    </div>
+  </div>
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+      </div>
+      <div class="w3-col m6">
+        <form action="https://www.w3schools.com/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required="" name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required="" name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required="" name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit" onclick="openContactModal()">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Page Content -->
+  </div>
+
+  <!-- Image of location/map -->
+  <img src="./template_files/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+
+  <script>
+    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length) { myIndex = 1 }
+      x[myIndex - 1].style.display = "block";
+      setTimeout(carousel, 4000);
+    }
+
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    // disabled the buttons buy in tour dates list where is sold out
+    var soldOutSpans = document.querySelectorAll('#soldOut');
+    var buyButtons = document.getElementsByClassName("buyBtn");
+    for (var i = 0; i < soldOutSpans.length; i++) {
+      var soldOutSpan = soldOutSpans[i].innerHTML;
+      var buyButton = buyButtons[i];
+      if (soldOutSpan.toLocaleLowerCase().includes('sold out')) {
+        buyButton.disabled = true;
+        buyButton.style.color = "gray";
+        buyButton.style.backgroundColor = "lightgray";
+        buyButton.style.cursor = "not-allowed";
+      }
+    }
+
+    // make the name , description and the button play in new div 
+    if (window.innerWidth <= 600) {
+      var cards = document.querySelectorAll('#cardContent');
+      console.log(cards);
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        // Get the items
+        var item1 = card.querySelector('.cardName');
+        var item2 = card.querySelector('.cardImg');
+        var item3 = card.querySelector('.description');
+        var newDiv = document.createElement('div');
+        newDiv.classList.add('newDiv');
+
+        newDiv.appendChild(item1);
+        newDiv.appendChild(item3);
+
+        var newPlayButton = document.createElement('button');
+        newPlayButton.innerHTML = 'play';
+        newPlayButton.style.color = 'black';
+        newPlayButton.style.backgroundColor = 'transparent';
+        newPlayButton.style.border = '2px solid black';
+        newPlayButton.style.marginLeft = "auto";
+        newPlayButton.style.marginTop = "10px";
+
+
+        newDiv.appendChild(newPlayButton);
+
+        card.insertBefore(newDiv, item2.nextSibling);
+      }
+    }
+
+    var prevScrollpos = window.pageYOffset;
+
+    window.onscroll = function () {
+      var currentScrollPos = window.pageYOffset;
+
+      if (prevScrollpos > currentScrollPos) {
+        document.querySelector(".w3-top").classList.remove("w3-scroll-down");
+        document.querySelector(".w3-top").classList.add("w3-scroll-up");
+      } else {
+        document.querySelector(".w3-top").classList.remove("w3-scroll-up");
+        document.querySelector(".w3-top").classList.add("w3-scroll-down");
+      }
+
+      prevScrollpos = currentScrollPos;
+    }
+
+    //open Modal Contact
+    	var modal = document.getElementById("ContactModal");
+
+		// Open the modal
+		function openModal() {
+			modal.style.display = "block";
+			document.body.style.overflow = "hidden"; 
+		}
+
+		// Close the modal
+		function closeModal() {
+			modal.style.display = "none";
+			document.body.style.overflow = "auto";
+		}
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				closeModal();
+			}
+		}
+	</script>
+
+</body>
+</html>
+Note: This example uses Font Awesome for the success icon. You'll need to include the Font Awesome CSS file in your HTML if you want to use it.
+
+
+
+
+
+
+  </script>
+
+
+  <link rel="stylesheet" type="text/css" href="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/css/blur.css"
+    class="loom-blur-styles">
+</body><loom-container id="lo-engage-ext-container"><loom-shadow
+    classname="resolved"></loom-shadow></loom-container><loom-container id="lo-companion-container"><loom-shadow
+    classname="resolved"></loom-shadow></loom-container>
+
+</html>
